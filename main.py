@@ -16,6 +16,7 @@ explicam o que cada função deve fazer.
 """
 
 import csv
+from operator import index
 import os
 
 # ===== AULA 3 =====
@@ -32,25 +33,24 @@ tarefas = []
 # =====================================================================
 
 def adicionar_tarefa(titulo, prioridade="media"):
-    """
-    Cria uma nova tarefa e adiciona à lista `tarefas`.
-
-    A tarefa deve ser um dicionário com as chaves:
-        - "titulo": o texto recebido no parâmetro `titulo`
-        - "concluida": deve começar como False
-        - "prioridade": o texto recebido no parâmetro `prioridade`
-
-    Depois de adicionar, exiba uma mensagem confirmando que a tarefa
-    foi criada (pode usar print).
-    """
-    # TODO (Aula 1): crie o dicionário da tarefa
-    # TODO (Aula 1): adicione o dicionário à lista `tarefas`
-    # TODO (Aula 1): exiba uma mensagem de confirmação
+    tarefa = {"titulo": titulo,"concluida": False, "prioridade": prioridade} #dicionário da tarefa
+    tarefas.append(tarefa) #Append serve para adicionar algo ao print
+    print(f"Tarefa {titulo} adicionada.") 
+    
     # TODO (Aula 3): depois de implementar salvar_tarefas(), chame-a aqui
     pass
 
-
 def listar_tarefas():
+    if len(tarefas) == 0:
+            print("Não há tarefas cadastradas.")
+            return
+    else: 
+        for index, itens in enumerate(tarefas, start=1):
+            if itens ["concluida"] == True:
+                status = "[X]"
+            else:
+                status = "[ ]"
+            print(f"{index}. {status} {itens['titulo']} (prioridade:{itens['prioridade']})")
     """
     Exibe todas as tarefas cadastradas na lista `tarefas`.
 
@@ -75,6 +75,14 @@ def listar_tarefas():
 # =====================================================================
 
 def concluir_tarefa(indice):
+    for index, itens in enumerate(tarefas, start=1):
+        if indice < 1 or indice > len(tarefas):
+            print("Número de tarefa invalido.")
+            return
+        else:
+            tarefas[indice - 1]["concluida"] = True
+            print(f"Tarefa {itens['titulo']} concluída.")
+        
     """
     Marca como concluída a tarefa na posição `indice` (começando em 1).
 
