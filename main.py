@@ -35,7 +35,7 @@ tarefas = []
 def adicionar_tarefa(titulo, prioridade="media"):
     tarefa = {"titulo": titulo,"concluida": False, "prioridade": prioridade} #dicionário da tarefa
     tarefas.append(tarefa) #Append serve para adicionar algo ao print
-    print(f"Tarefa {titulo} adicionada.") 
+    print(f"Tarefaaa {titulo} adicionada.") 
     
     # TODO (Aula 3): depois de implementar salvar_tarefas(), chame-a aqui
     pass
